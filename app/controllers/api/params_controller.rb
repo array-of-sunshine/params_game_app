@@ -15,6 +15,8 @@ class Api::ParamsController < ApplicationController
     # outputs
     # if they got the answer correct
     user_guess = params[:number].to_i
+    # p params[:number1] # nil
+    # p params[:number1].to_i
     if user_guess == 36
       @message = "You got it right"
     elsif user_guess > 36
@@ -23,19 +25,5 @@ class Api::ParamsController < ApplicationController
       @message = "You guessed too low, guess higher net time"
     end
     render "my_guess.json.jbuilder"
-  end
-
-  def segment_guess
-    # inputs
-    # ouputs
-    user_guess = params[:my_guess].to_i
-    if user_guess == 36
-      @message = "You got it right"
-    elsif user_guess > 36
-      @message = "You guessed too high, guess lower net time"
-    elsif user_guess < 36
-      @message = "You guessed too low, guess higher net time"
-    end
-    render "my_segment_guess.json.jbuilder"
   end
 end
