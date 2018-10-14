@@ -24,4 +24,18 @@ class Api::ParamsController < ApplicationController
     end
     render "my_guess.json.jbuilder"
   end
+
+  def segment_guess
+    # inputs
+    # ouputs
+    user_guess = params[:my_guess].to_i
+    if user_guess == 36
+      @message = "You got it right"
+    elsif user_guess > 36
+      @message = "You guessed too high, guess lower net time"
+    elsif user_guess < 36
+      @message = "You guessed too low, guess higher net time"
+    end
+    render "my_segment_guess.json.jbuilder"
+  end
 end
