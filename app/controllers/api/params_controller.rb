@@ -14,11 +14,12 @@ class Api::ParamsController < ApplicationController
     # number that the user guesses
     # outputs
     # if they got the answer correct
-    if params[:number].to_i == 36
+    user_guess = params[:number].to_i
+    if user_guess == 36
       @message = "You got it right"
-    elsif params[:number].to_i > 36
+    elsif user_guess > 36
       @message = "You guessed too high, guess lower net time"
-    elsif params[:number].to_i < 36
+    elsif user_guess < 36
       @message = "You guessed too low, guess higher net time"
     end
     render "my_guess.json.jbuilder"
